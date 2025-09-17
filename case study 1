@@ -4,12 +4,10 @@ public class BillingSystem {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // Step 1: Ask how many items the customer bought
         System.out.print("Enter number of different items: ");
         int n = sc.nextInt();
         sc.nextLine(); // consume leftover newline
 
-        // Step 2: Create arrays to store item details
         String[] itemNames = new String[n];
         double[] prices = new double[n];
         int[] quantities = new int[n];
