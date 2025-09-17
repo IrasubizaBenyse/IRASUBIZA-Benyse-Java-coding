@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class StudentGradingSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int totalStudents = 0;
+        int passCount = 0;
+        int failCount = 0;
+
+        System.out.println("Enter student marks (0–100). Enter -1 to stop.");
+
+        // Step 1 + 2: Keep asking until -1 is entered
+        while (true) {
+            System.out.print("Enter marks: ");
+            int marks = sc.nextInt();
+
+            if (marks == -1) { // Sentinel value to stop
+                break;
+            }
+
+            if (marks < 0 || marks > 100) {
+                System.out.println("Invalid marks! Please enter between 0–100.");
+                continue; // go back to ask again
+            }
+
+            totalStudents++;
+
+            // Step 3: Assign grade using if–else
+            if (marks >= 80) {
+                System.out.println("Grade: A");
+            } else if (marks >= 70) {
+                System.out.println("Grade: B");
+            } else if (marks >= 60) {
+                System.out.println("Grade: C");
+            } else if (marks >= 50) {
+                System.out.println("Grade: D");
+            } else {
+                System.out.println("Grade: F");
+            }
+
+            // Step 4: Pass/fail count
+            if (marks >= 50) {
+                passCount++;
+            } else {
+                failCount++;
+            }
+        }
+
+        // Step 5: Summary report
+        System.out.println("\n====== CLASS SUMMARY ======");
+        System.out.println("Total Students: " + totalStudents);
+        System.out.println("Passed: " + passCount);
+        System.out.println("Failed: " + failCount);
+
+        if (totalStudents > 0) {
+            double passRate = (passCount * 100.0) / totalStudents;
+            System.out.printf("Class Pass Rate: %.2f%%\n", passRate);
+        } else {
+            System.out.println("No student data entered.");
+        }
+
+        sc.close();
+    }
+}
